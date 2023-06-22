@@ -1,29 +1,36 @@
 #include <stdio.h>
 
-void printBits(unsigned int num) {
+void printNumbers(int n) {
     int i;
-    unsigned int mask = 1 << 31; // Start with the leftmost bit (most significant bit)
+    for (i = 1; i <= n; i++) {
+        printf("%d", i);
+    }
+    for (i = n - 1; i >= 1; i--) {
+        printf("%d", i);
+    }
+}
 
-    for (i = 0; i < 32; i++) {
-        // Use bitwise AND to check if the current bit is 1 or 0
-        if (num & mask)
-            printf("1");
-        else
-            printf("0");
+void printSpaces(int n) {
+    int i;
+    for (i = 1; i <= n; i++) {
+        printf(" ");
+    }
+}
 
-        // Shift the mask to the right to check the next bit
-        mask >>= 1;
+void printPattern(int n) {
+    int i;
+    for (i = n; i >= 1; i--) {
+        printNumbers(i);
+        printSpaces(2 * (n - i));
+        printNumbers(i);
+        printf("\n");
     }
 }
 
 int main() {
-    unsigned int num;
-    printf("Enter a 32-bit integer: ");
-    scanf("%u", &num);
-
-    printf("Bits: ");
-    printBits(num);
-    printf("\n");
-
+    int n;
+    printf("Enter the number of rows: ");
+    scanf("%d", &n);
+    printPattern(n);
     return 0;
 }
