@@ -1,38 +1,19 @@
 #include <stdio.h>
 
-void printIncreasing(int n) {
-    for (int i = 1; i <= n; i++) {
-        printf("%d", i);
+int sumAlternateElements(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i += 2) {
+        sum += arr[i];
     }
-}
-
-void printSpaces(int n) {
-    for (int i = 1; i <= n; i++) {
-        printf(" ");
-    }
-}
-
-void printDecreasing(int n) {
-    for (int i = n; i >= 1; i--) {
-        printf("%d", i);
-    }
-}
-
-void printPattern(int n) {
-    for (int i = 1; i <= n; i++) {
-        printIncreasing(i);
-        printSpaces(2 * (n - i));
-        printDecreasing(i);
-        printf("\n");
-    }
+    return sum;
 }
 
 int main() {
-    int n;
-    printf("Enter the value of n: ");
-    scanf("%d", &n);
+    int arr[] = {10, 20, 30, 40, 50};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-    printPattern(n);
+    int result = sumAlternateElements(arr, size);
+    printf("Sum of alternate elements: %d\n", result);
 
     return 0;
 }
